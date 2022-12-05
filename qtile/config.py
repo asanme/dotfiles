@@ -48,12 +48,14 @@ keys = [
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
     Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
+
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
     Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
     Key([mod, "shift"], "l", lazy.layout.shuffle_right(), desc="Move window to the right"),
     Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
     Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
+    
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
     Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
@@ -61,6 +63,7 @@ keys = [
     Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
@@ -72,12 +75,14 @@ keys = [
         desc="Toggle between split and unsplit sides of stack",
     ),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
+
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+
     # Loads rofi
     Key([mod], "s", lazy.spawn('rofi -dpi 144 -show drun')),
 
@@ -95,15 +100,13 @@ keys = [
     
     ##Other stuff
 	#Key([mod], "h", lazy.spawn("roficlip"), desc='clipboard'),
-    #Key([mod], "s", lazy.spawn("flameshot gui"), desc='Screenshot'),
+    #Key([mod], "shift", "s", lazy.spawn("flameshot gui"), desc='Screenshot'),
 ]   
 
 #PICOM AutoStart
 @hook.subscribe.startup
 def autostart():
     subprocess.Popen(["picom"])
-    subprocess.Popen(['setxkbmap -layout "es,us" -option "grp:alt_shift_toggle" &'])
-
     #subprocess.Popen(["pavucontrol"])
 
 # █▀▀ █▀█ █▀█ █░█ █▀█ █▀
@@ -135,14 +138,14 @@ layouts = [
     layout.Columns( 
         margin=12, 
         border_focus='#ffffff',
-	    border_normal='#00b4d8', 
+	    border_normal='#4ea8de', 
         border_width=3
     ),
     layout.Max(	
-        border_focus='#1F1D2E',
-	    border_normal='#1F1D2E',
-	    margin=4,
-	    border_width=0,
+        border_focus='#ffffff',
+	    border_normal='#4ea8de', 
+	    margin=12,
+	    border_width=3,
     ),
     
     layout.Floating(	border_focus='#1F1D2E',
@@ -150,26 +153,30 @@ layouts = [
 	    margin=4,
 	    border_width=0,
 	),
+
     # Try more layouts by unleashing below layouts
     #  layout.Stack(num_stacks=2),
     #  layout.Bsp(),
-     layout.Matrix(	border_focus='#1F1D2E',
+    layout.Matrix(	border_focus='#1F1D2E',
 	    border_normal='#1F1D2E',
 	    margin=4,
 	    border_width=0,
 	),
-     layout.MonadTall(	border_focus='#1F1D2E',
+
+    layout.MonadTall(	border_focus='#1F1D2E',
 	    border_normal='#1F1D2E',
         margin=4,
 	    border_width=0,
 	),
+
     layout.MonadWide(	border_focus='#1F1D2E',
 	    border_normal='#1F1D2E',
 	    margin=4,
 	    border_width=0,
 	),
+
    #  layout.RatioTile(),
-     layout.Tile(	border_focus='#1F1D2E',
+    layout.Tile(	border_focus='#1F1D2E',
 	    border_normal='#1F1D2E',
     ),
    #  layout.TreeTab(),
@@ -198,7 +205,6 @@ screens = [
                     length=30,
                     background='#1F1D2E',
                 ),
-				
 
                 widget.Image(
                     filename='~/.config/qtile/Assets/launch_Icon.png',
