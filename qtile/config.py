@@ -134,9 +134,9 @@ for i in groups:
 layouts = [
     layout.Columns( 
         margin=12, 
-        border_focus='#1F1D2E',
-	    border_normal='#1F1D2E', 
-        border_width=0
+        border_focus='#ffffff',
+	    border_normal='#00b4d8', 
+        border_width=3
     ),
     layout.Max(	
         border_focus='#1F1D2E',
