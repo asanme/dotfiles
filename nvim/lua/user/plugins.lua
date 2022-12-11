@@ -40,41 +40,61 @@ packer.init({
 
 -- Install your plugins here
 return packer.startup(function(use)
- -- My plugins here
-  use "wbthomason/packer.nvim" -- Have packer manage itself
-  use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
-  use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
+	-- My plugins here
+	use("wbthomason/packer.nvim") -- Have packer manage itself
+	use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
+	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
 
-  -- Colorschemes
-  -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
-  use "lunarvim/darkplus.nvim"
+	-- Colorschemes
+	use("folke/tokyonight.nvim")
+	use("navarasu/onedark.nvim")
+	use("EdenEast/nightfox.nvim")
 
-  -- My favourite theme
-  use 'folke/tokyonight.nvim'
+	-- Cmp plugins
+	use("hrsh7th/nvim-cmp") -- The completion plugin
+	use("hrsh7th/cmp-buffer") -- buffer completions
+	use("hrsh7th/cmp-path") -- path completions
+	use("hrsh7th/cmp-cmdline") -- cmdline completions
+	use("saadparwaiz1/cmp_luasnip") -- snippet completions
+	use("hrsh7th/cmp-nvim-lsp")
+	use("hrsh7th/cmp-nvim-lua")
 
-  -- cmp plugins
-  use "hrsh7th/nvim-cmp" -- The completion plugin
-  use "hrsh7th/cmp-buffer" -- buffer completions
-  use "hrsh7th/cmp-path" -- path completions
-  use "hrsh7th/cmp-cmdline" -- cmdline completions
-  use "saadparwaiz1/cmp_luasnip" -- snippet completions
-  use "hrsh7th/cmp-nvim-lsp"
-  use "hrsh7th/cmp-nvim-lua"
-
-  -- snippets
-  use "L3MON4D3/LuaSnip" --snippet engine
-  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+	-- Snippets
+	use("L3MON4D3/LuaSnip") --snippet engine
+	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 
 	-- LSP
-  use "neovim/nvim-lspconfig" -- enable LSP
-  use "williamboman/mason.nvim" -- simple to use language server installer
-  use "williamboman/mason-lspconfig.nvim" -- simple to use language server installer
-  use 'jose-elias-alvarez/null-ls.nvim' -- LSP diagnostics and code actions
+	use("neovim/nvim-lspconfig") -- enable LSP
+	use("williamboman/mason.nvim") -- simple to use language server installer
+	use("williamboman/mason-lspconfig.nvim") -- simple to use language server installer
+	use("jose-elias-alvarez/null-ls.nvim") -- LSP diagnostics and code actions
 
-  -- Telescope
-  use "nvim-telescope/telescope.nvim"
-  -- Package disabled for now as the dependencies are not working
-  -- use 'nvim-telescope/telescope-media-files.nvim'
+	-- Telescope
+	use("nvim-telescope/telescope.nvim")
+
+	-- Package disabled for now as the dependencies are not working
+	-- use 'nvim-telescope/telescope-media-files.nvim'
+	use({
+		"nvim-treesitter/nvim-treesitter",
+		run = ":TSUpdate",
+	})
+
+	-- Autopairs for closing parenthesis among other symbols
+	use("windwp/nvim-autopairs")
+	-- Easily comment stuff
+	use("numToStr/Comment.nvim")
+	-- Commenting in TS files
+	use("JoosepAlviste/nvim-ts-context-commentstring")
+	-- Git signs for files (status)
+	use("lewis6991/gitsigns.nvim")
+
+	-- Nvim Tree and icons for Nvim Tree
+	use("kyazdani42/nvim-web-devicons")
+	use("kyazdani42/nvim-tree.lua")
+
+	-- Buffer line
+	use("akinsho/bufferline.nvim")
+	use("moll/vim-bbye")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
