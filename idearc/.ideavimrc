@@ -1,0 +1,9 @@
+set clipboard+=unnamed
+set number
+set relativenumber
+set showmode
+set showcmd
+set ignorecase
+set incsearch
+
+vnoremap p "_dP
