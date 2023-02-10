@@ -36,13 +36,12 @@ from libqtile.config import Click, Drag, Group, Key, Match, Screen, KeyChord
 mod = "mod4"
 terminal = guess_terminal()
 
-# █▄▀ █▀▀ █▄█ █▄▄ █ █▄░█ █▀▄ █▀
-# █░█ ██▄ ░█░ █▄█ █ █░▀█ █▄▀ ▄█
-
+# Keybindings
 keys = [
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
     # Switch between windows
+    Key([mod], "f", lazy.window.toggle_floating()),
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
@@ -80,8 +79,9 @@ keys = [
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
-    Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+
+    #Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
+    #Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
 
     # Loads rofi
     Key([mod], "s", lazy.spawn('rofi -dpi 144 -show drun')),
@@ -90,6 +90,7 @@ keys = [
     Key([], "XF86AudioRaiseVolume", lazy.spawn("pactl set-sink-volume 0 +5%"), desc='Volume Up'),
     Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume 0 -5%"), desc='volume down'),
     Key([], "XF86AudioMute", lazy.spawn("pulsemixer --toggle-mute"), desc='Volume Mute'),
+
     Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause"), desc='playerctl'),
     Key([], "XF86AudioPrev", lazy.spawn("playerctl previous"), desc='playerctl'),
     Key([], "XF86AudioNext", lazy.spawn("playerctl next"), desc='playerctl'),
@@ -98,20 +99,28 @@ keys = [
     Key([], "XF86MonBrightnessUp", lazy.spawn("light -A 10"), desc='brightness UP'),
     Key([], "XF86MonBrightnessDown", lazy.spawn("light -U 10"), desc='brightness Down'),
     
-    ##Other stuff
+
+    # Screenshots
 	#Key([mod], "h", lazy.spawn("roficlip"), desc='clipboard'),
-    #Key([mod], "shift", "s", lazy.spawn("flameshot gui"), desc='Screenshot'),
+    Key([], "Print", lazy.spawn("flameshot gui --clipboard --accept-on-select"), desc='Screenshot'),
+
+    Key([mod], "m", lazy.hide_show_bar(), desc="Toggle visibility of Bar"),
 ]   
+
+
 
 #PICOM AutoStart
 @hook.subscribe.startup
 def autostart():
-    subprocess.Popen(["picom"])
+    home = os.path.expanduser('~')
     #subprocess.Popen(["pavucontrol"])
+    subprocess.Popen(["picom"])
+    # AUTOSTART KEYBOARD TOGGLE
+    subprocess.Popen([home + '/.config/qtile/autostart.sh'])
+    # AUTOSTART GESTURES
+    subprocess.Popen(["fusuma"])
 
-# █▀▀ █▀█ █▀█ █░█ █▀█ █▀
-# █▄█ █▀▄ █▄█ █▄█ █▀▀ ▄█
-
+# Groups
 groups = [Group(f"{i+1}", label="") for i in range(8)]
 
 for i in groups:
@@ -135,69 +144,28 @@ for i in groups:
 
 ###𝙇𝙖𝙮𝙤𝙪𝙩###
 layouts = [
-    layout.Columns( 
-        margin=12, 
+    layout.Columns(
+        margin=6, 
         border_focus='#ffffff',
 	    border_normal='#4ea8de', 
         border_width=3
     ),
-    layout.Max(	
-        border_focus='#ffffff',
-	    border_normal='#4ea8de', 
-	    margin=12,
-	    border_width=3,
-    ),
-    
-    layout.Floating(	border_focus='#1F1D2E',
-	    border_normal='#1F1D2E',
-	    margin=4,
-	    border_width=0,
-	),
 
-    # Try more layouts by unleashing below layouts
-    #  layout.Stack(num_stacks=2),
-    #  layout.Bsp(),
-    layout.Matrix(	border_focus='#1F1D2E',
-	    border_normal='#1F1D2E',
-	    margin=4,
-	    border_width=0,
-	),
-
-    layout.MonadTall(	border_focus='#1F1D2E',
-	    border_normal='#1F1D2E',
-        margin=4,
-	    border_width=0,
-	),
-
-    layout.MonadWide(	border_focus='#1F1D2E',
-	    border_normal='#1F1D2E',
-	    margin=4,
-	    border_width=0,
-	),
-
-   #  layout.RatioTile(),
-    layout.Tile(	border_focus='#1F1D2E',
-	    border_normal='#1F1D2E',
-    ),
-   #  layout.TreeTab(),
-   #  layout.VerticalTile(),
-   #  layout.Zoomy(),
+    layout.Max(),
 ]
 
 widget_defaults = dict(
     font="sans",
-    fontsize=25,
+    fontsize=23,
     padding=10
 )
-extension_defaults = [ widget_defaults.copy() ] 
 
+extension_defaults = [ widget_defaults.copy() ] 
             
-# █▄▄ ▄▀█ █▀█
-# █▄█ █▀█ █▀▄
- 
+# Bar
 screens = [
     Screen(
-        wallpaper='~/wallpapers/wallpaper.jpg',
+        wallpaper='~/wallpapers/catalina-wallpaper.jpg',
         wallpaper_mode='fill',
         top=bar.Bar(
             [
@@ -206,6 +174,8 @@ screens = [
                     background='#1F1D2E',
                 ),
 
+
+                # First Separator
                 widget.Image(
                     filename='~/.config/qtile/Assets/launch_Icon.png',
                     margin=2,
@@ -216,6 +186,8 @@ screens = [
                     filename='~/.config/qtile/Assets/6.png',
                 ),
 
+
+                # Second Separator
                 widget.GroupBox(
                     fontsize=25,
                     borderwidth=3,
@@ -257,11 +229,12 @@ screens = [
                 widget.WindowName(
                     background = '#7676B2',
                     format = "{name}",
-                    font='JetBrains Mono Bold',
+                    font='JetBrains Mono Regular',
                     empty_group_string = 'Desktop',
+                    center_aligned= True
                 ),
 
-
+                #Third Separator
                 widget.Image(
                     filename='~/.config/qtile/Assets/3.png',                
                 ),   
@@ -343,17 +316,19 @@ screens = [
 ]
 
 # Drag floating layouts.
+'''
 mouse = [
     Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
     Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
     Click([mod], "Button2", lazy.window.bring_to_front()),
 ]
+'''
 
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: list
 follow_mouse_focus = True
 bring_front_click = False
-cursor_warp = False
+cursor_warp = True # This settings makes the cursor follow the focused window
 
 floating_layout = layout.Floating(
 	border_focus='#1F1D2E',
