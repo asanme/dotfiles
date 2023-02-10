@@ -1,7 +1,6 @@
 from libqtile.lazy import lazy
 from libqtile.config import Key
 from libqtile.utils import guess_terminal
-from groups import groups
 
 mod = "mod4"
 terminal = guess_terminal()
@@ -75,21 +74,3 @@ keys = [
 
     Key([mod], "m", lazy.hide_show_bar(), desc="Toggle visibility of Bar"),
 ]   
-
-for i in groups:
-    keys.extend(
-            [
-                Key(
-                    [mod],
-                    i.name,
-                    lazy.group[i.name].toscreen(),
-                    desc="Switch to group {}".format(i.name),
-                    ),
-                Key(
-                    [mod, "shift"],
-                    i.name,
-                    lazy.window.togroup(i.name, switch_group=True),
-                    desc="Switch to & move focused window to group {}".format(i.name),
-                    ),
-                ]
-            )

@@ -1,4 +1,3 @@
-from libqtile import 
 from libqtile import layout
 from libqtile.config import Match
 
