@@ -12,6 +12,10 @@ def autostart():
     subprocess.Popen([home + '/.config/qtile/autostart.sh'])
     subprocess.Popen(["picom"])
     subprocess.Popen(["fusuma"])
+    subprocess.Popen(["nm-applet"])
+    subprocess.Popen(["cbatticon"])
+    subprocess.Popen(["volumeicon"])
+
 
 widget_defaults = dict(
     font="sans",

@@ -1,7 +1,4 @@
 #!/bin/bash
-setxkbmap -layout "es,us" -option "grp:mod_shift_space_toggle" &
-nm-applet &
-
 #My xrandr default config
 
 # extend non-HiDPI external display on DP* above HiDPI internal display eDP*
