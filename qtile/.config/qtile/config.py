@@ -16,7 +16,6 @@ def autostart():
     subprocess.Popen(["cbatticon"])
     subprocess.Popen(["volumeicon"])
 
-
 widget_defaults = dict(
     font="sans",
     fontsize=23,
