@@ -24,12 +24,12 @@ symbol = " "
 # You can also replace your username with a neat symbol like  to save some space
 [username]
 show_always = true
-style_user = "bg:#9A348E bold"
-style_root = "bg:#9A348E bold"
+style_user = "bg:#9A348E bold fg:#FFFFFF"
+style_root = "bg:#9A348E bold fg:#FFFFFF"
 format = '[ $user ]($style)'
 
 [directory]
-style = "bg:#DA627D"
+style = "bg:#DA627D fg:#FFFFFF"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -63,5 +63,5 @@ format = '([$untracked$modified$deleted]($style))'
 [time]
 disabled = false
 time_format = "%R" # Hour:Minute Format
-style = "bg:#33658A bold"
+style = "bg:#33658A fg:#FFFFFF bold"
 format = '[ $time ]($style)'

@@ -11,10 +11,14 @@
 #import:
 #  - /path/to/alacritty.yml
 import:
-    - ~/.alacritty-colorscheme/themes/challenger_deep.yaml
+  #- ~/.config/alacritty/catppuccin/catppuccin-mocha.yml
+  - ~/.config/alacritty/catppuccin/catppuccin-macchiato.yml
+  #- ~/.config/alacritty/catppuccin/catppuccin-frappe.yml
+  #  - ~/.config/alacritty/catppuccin/catppuccin-latte.yml   
+  #  - ~/.alacritty-colorscheme/themes/challenger_deep.yaml
 
 window:
-    opacity: 0.9
+    opacity: 1 #0.9
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
@@ -123,7 +127,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: FiraCode NFM
+    family: FiraCode NF
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -134,7 +138,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: FiraCode NFM
+    family: FiraCode NF
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -145,21 +149,21 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: FiraCode NFM
+    family: FiraCode NF
 
     # The `style` can be specified to pick a specific face.
     style: Italic
 
   # Bold italic font face
-  #bold_italic:
+  bold_italic:
     # Font family
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    #family: monospace
+    family: FiraCode NF
 
     # The `style` can be specified to pick a specific face.
-    #style: Bold Italic
+    style: Bold Italic
 
   # Point size
   #size: 11.0
@@ -194,6 +198,7 @@ font:
   #primary:
   #background: '#ffffff'
   #foreground: '#c5c8c6'
+  #foreground: '#ffffff'
 
     # Bright and dim foreground colors
     #
