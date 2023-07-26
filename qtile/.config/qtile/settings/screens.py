@@ -10,7 +10,7 @@ from .widgets import primary_widgets, secondary_widgets
 def status_bar(widgets):
     return bar.Bar(widgets, 40, opacity=1)
 
-screens = [Screen(wallpaper='~/wallpapers/catalina-wallpaper.jpg', wallpaper_mode='fill', top=status_bar(primary_widgets()))]
+screens = [Screen(wallpaper='~/wallpapers/forest1.jpg', wallpaper_mode='fill', top=status_bar(primary_widgets()))]
 
 xrandr = "xrandr | grep -w 'connected'"
 

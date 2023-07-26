@@ -4,7 +4,7 @@ from .keybinds import mod, keys
 
 groups = [
     Group(i) for i in [
-    "   ", "   ", "   ", "   ", "   ", "   ", "   ", "   ", "   ",
+        "   ", "   ",  "   ", "   ", "   ", "   ", "   ", "   ", "   ",
     ]
 ]
 
