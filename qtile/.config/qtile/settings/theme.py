@@ -4,6 +4,7 @@ import json
 
 qtile_path = path.join(path.expanduser('~'), ".config", "qtile")
 
+
 def load_theme():
     theme = "monokai-pro"
 
@@ -14,7 +15,6 @@ def load_theme():
     else:
         with open(config, "w") as f:
             f.write(f'{{"theme": "{theme}"}}\n')
-
 
     theme_file = path.join(qtile_path, "themes", f'{theme}.json')
     if not path.isfile(theme_file):

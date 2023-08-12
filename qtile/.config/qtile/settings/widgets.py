@@ -1,7 +1,10 @@
 from libqtile import widget
 from .theme import colors
 
-def base(fg='text', bg='dark'): 
+font = "CaskaydiaCove Nerd Font"
+
+
+def base(fg='text', bg='dark'):
     return {
         'foreground': colors[fg],
         'background': colors[bg]
@@ -24,18 +27,19 @@ def icon(fg='text', bg='dark', fontsize=24, text="?"):
 def powerline(fg="light", bg="dark", fontsize=56, padding=-7):
     return widget.TextBox(
         **base(fg, bg),
-        text="", # Icon: nf-oct-triangle_left
+        text="",  # Icon: nf-oct-triangle_left
         fontsize=fontsize,
-        padding=padding
+        padding=padding,
+        font=font
     )
 
 
-def workspaces(icon_fontsize=27, window_name_font_size=24): 
+def workspaces(icon_fontsize=27, window_name_font_size=24):
     return [
         separator(),
         widget.GroupBox(
             **base(fg='light'),
-            font='UbuntuMono Nerd Font',
+            font=font,
             fontsize=icon_fontsize,
             margin_y=3,
             margin_x=0,
@@ -66,23 +70,22 @@ def primary_widgets():
 
         separator(),
 
-        powerline('color1', 'dark'),
+        # powerline('color1', 'dark'),
 
-        widget.Memory(**base(bg='color1'), format=' {MemUsed: .0f}{mm} ', font="JetBrains Mono Bold", fontsize=25, padding=10),
+        widget.Memory(**base(bg='color1'), format=' {MemUsed: .0f}{mm} ', font=font, fontsize=25,
+                      padding=10),
 
-        powerline('color2', 'color1'),
+        # powerline('color2', 'color1'),
 
         widget.CurrentLayoutIcon(**base(bg='color2'), scale=0.65),
 
-        widget.CurrentLayout(**base(bg='color2'), fmt='{}  ', font='JetBrains Mono Bold'),
+        widget.CurrentLayout(**base(bg='color2'), fmt='{}  ', font=font),
 
-        powerline('color1', 'color2'),
+        # powerline('color1', 'color2'),
 
-        icon(bg="color1", text=' '), # Icon: nf-mdi-calendar_clock
+        widget.Clock(**base(bg='color1'), format='%d/%m/%Y -  %H:%M '),
 
-        widget.Clock(**base(bg='color1'), format='%d/%m/%Y -   %H:%M '),
-
-        powerline('dark', 'color1'),
+        # powerline('dark', 'color1'),
 
         widget.Systray(background=colors['dark']),
     ]
@@ -94,23 +97,16 @@ def secondary_widgets():
 
         separator(),
 
-        powerline('color1', 'dark'),
-
         widget.CurrentLayoutIcon(**base(bg='color1'), scale=0.65),
 
-        widget.CurrentLayout(**base(bg='color1'), fmt='{}  ', padding=5, font='JetBrains Mono Bold'),
+        widget.CurrentLayout(**base(bg='color1'), fmt='{}  ', padding=5, font=font),
 
-        powerline('color2', 'color1'),
-
-        icon(bg="color2", text=' '), # Icon: nf-mdi-calendar_clock
-
-        widget.Clock(**base(bg='color2'), format='%d/%m/%Y -   %H:%M '),
-
-        powerline('dark', 'color2'),
+        widget.Clock(**base(bg='color2'), format='%d/%m/%Y - %H:%M '),
     ]
 
+
 widget_defaults = {
-    'font': 'FiraCode NFM',
+    'font': font,
     'fontsize': 24,
     'padding': 1,
 }

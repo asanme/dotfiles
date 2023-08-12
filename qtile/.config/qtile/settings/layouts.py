@@ -3,9 +3,9 @@ from libqtile.config import Match
 
 layouts = [
     layout.Columns(
-        margin=6, 
+        margin=6,
         border_focus='#ffffff',
-	    border_normal='#4ea8de', 
+        border_normal='#4ea8de',
         border_width=3
     ),
 
@@ -13,9 +13,9 @@ layouts = [
 ]
 
 floating_layout = layout.Floating(
-	border_focus='#1F1D2E',
-	border_normal='#1F1D2E',
-	border_width=0,
+    border_focus='#1F1D2E',
+    border_normal='#1F1D2E',
+    border_width=0,
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,

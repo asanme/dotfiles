@@ -10,7 +10,8 @@ from .widgets import primary_widgets, secondary_widgets
 def status_bar(widgets):
     return bar.Bar(widgets, 40, opacity=1)
 
-screens = [Screen(wallpaper='~/wallpapers/forest1.jpg', wallpaper_mode='fill', top=status_bar(primary_widgets()))]
+
+screens = [Screen(wallpaper='~/wallpapers/main.jpg', wallpaper_mode='fill', top=status_bar(primary_widgets()))]
 
 xrandr = "xrandr | grep -w 'connected'"
 
@@ -29,8 +30,9 @@ else:
     # Check the output of the xrandr command, if a monitor is connected
     # but turned off, then it will not show any resolution for that montior.
     xrandr_output = command.stdout.decode("UTF-8").split("\n")[:-1]
-    resolutions = map(lambda output: output.split(" ")[2], xrandr_output) 
+    resolutions = map(lambda output: output.split(" ")[2], xrandr_output)
     connected_monitors = len([r for r in resolutions if not r.startswith("(")])
 
 for _ in range(1, connected_monitors):
-    screens.append(Screen(wallpaper='~/wallpapers/mojave-wallpaper.jpg', wallpaper_mode='fill',top=status_bar(secondary_widgets())))
+    screens.append(Screen(wallpaper='~/wallpapers/main.jpg', wallpaper_mode='fill',
+                          top=status_bar(secondary_widgets())))

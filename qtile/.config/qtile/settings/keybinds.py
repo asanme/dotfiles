@@ -3,7 +3,7 @@ from libqtile.config import Key
 from libqtile.utils import guess_terminal
 
 mod = "mod4"
-terminal = guess_terminal()
+terminal = "kitty"
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -22,7 +22,7 @@ keys = [
     Key([mod, "shift"], "l", lazy.layout.shuffle_right(), desc="Move window to the right"),
     Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
     Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
-    
+
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
     Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
@@ -48,29 +48,28 @@ keys = [
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
 
-    #Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    #Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    # Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
+    # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
 
     # Loads rofi
     Key([mod], "s", lazy.spawn('rofi -dpi 144 -show drun')),
 
-    #AUDIO CONTROL
+    # AUDIO CONTROL
     Key([], "XF86AudioRaiseVolume", lazy.spawn("pactl set-sink-volume 0 +5%"), desc='Volume Up'),
     Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume 0 -5%"), desc='volume down'),
-    Key([], "XF86AudioMute", lazy.spawn("pulsemixer --toggle-mute"), desc='Volume Mute'),
+    Key([], "XF86AudioMute", lazy.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle"), desc='Volume Mute'),
 
     Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause"), desc='playerctl'),
     Key([], "XF86AudioPrev", lazy.spawn("playerctl previous"), desc='playerctl'),
     Key([], "XF86AudioNext", lazy.spawn("playerctl next"), desc='playerctl'),
 
-    #BRIGHTNESS CONTROL
-    Key([], "XF86MonBrightnessUp", lazy.spawn("light -A 10"), desc='brightness UP'),
-    Key([], "XF86MonBrightnessDown", lazy.spawn("light -U 10"), desc='brightness Down'),
-    
+    # BRIGHTNESS CONTROL
+    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl s +10%"), desc='brightness UP'),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl s 10%-"), desc='brightness Down'),
 
     # Screenshots
-	#Key([mod], "h", lazy.spawn("roficlip"), desc='clipboard'),
+    # Key([mod], "h", lazy.spawn("roficlip"), desc='clipboard'),
     Key([], "Print", lazy.spawn("flameshot gui --clipboard --accept-on-select"), desc='Screenshot'),
 
     Key([mod], "m", lazy.hide_show_bar(), desc="Toggle visibility of Bar"),
-]   
+]

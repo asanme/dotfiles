@@ -1,6 +1,5 @@
 eval "$(starship init zsh)"
 alias spotx="bash <(curl -sSL https://raw.githubusercontent.com/SpotX-CLI/SpotX-Linux/main/install.sh) -P /home/asanme/.local/share/spotify-launcher/install/usr/share/spotify"
-alias lvim="/home/asanme/.local/bin/lvim"
 export CHROME_EXECUTABLE=/usr/bin/google-chrome-stable
 export ANDROID_HOME=/home/asanme/Android/Sdk/
 export ANDROID_SDK_ROOT=$ANDROID_HOME
