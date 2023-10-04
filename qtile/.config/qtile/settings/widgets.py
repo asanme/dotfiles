@@ -102,6 +102,8 @@ def secondary_widgets():
         widget.CurrentLayout(**base(bg='color1'), fmt='{}  ', padding=5, font=font),
 
         widget.Clock(**base(bg='color2'), format='%d/%m/%Y - %H:%M '),
+        
+        widget.BatteryIcon(),
     ]
 
 

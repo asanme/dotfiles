@@ -1,4 +1,4 @@
-set clipboard+=unnamed
+set clipboard^=unnamedplus
 set number
 set relativenumber
 set showmode
@@ -23,4 +23,4 @@ inoremap <S-Tab> <C-D>
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 
-set scrolloff=18
+set scrolloff=999
