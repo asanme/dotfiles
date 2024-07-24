@@ -11,7 +11,7 @@ def status_bar(widgets):
     return bar.Bar(widgets, 40, opacity=1)
 
 
-screens = [Screen(wallpaper='~/wallpapers/main.jpg', wallpaper_mode='fill', top=status_bar(primary_widgets()))]
+screens = [Screen(wallpaper='~/wallpapers/leafs-wallpaper.jpg', wallpaper_mode='fill', top=status_bar(primary_widgets()))]
 
 xrandr = "xrandr | grep -w 'connected'"
 
@@ -34,5 +34,5 @@ else:
     connected_monitors = len([r for r in resolutions if not r.startswith("(")])
 
 for _ in range(1, connected_monitors):
-    screens.append(Screen(wallpaper='~/wallpapers/secondary.jpg', wallpaper_mode='fill',
+    screens.append(Screen(wallpaper='~/wallpapers/high_sierra.jpg', wallpaper_mode='fill',
                           top=status_bar(secondary_widgets())))
