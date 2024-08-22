@@ -143,7 +143,6 @@ set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $workspace "~/dotfiles/i3/.config/i3/auto_workspace.sh"
 
 # switch to workspace
 bindsym $mod+1 exec --no-startup-id ~/dotfiles/i3/.config/i3/auto_workspace.sh $ws1
@@ -195,7 +194,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-assign [class="raylib"] $ws2
+assign [class="Raylib" title="raylib"] 1
 
 set $rosewater #f5e0dc
 set $flamingo  #f2cdcd
