@@ -1,0 +1,5 @@
+Xft.dpi: 144 
+Xcursor.theme: Qogir-dark
+Xcursor.size: 16
+Xft.antialias: 1
+rofi.dpi: 144
