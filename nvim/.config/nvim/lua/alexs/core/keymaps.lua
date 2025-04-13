@@ -30,3 +30,7 @@ keymap.set("n", "<C-l>", "<C-w>v", { desc = "Split vertically" })
 keymap.set("n", "<C-l>", "<C-w>s", { desc = "Split horizontally" })
 keymap.set("n", "<leader>se", "<C-w>=", { desc = "Resize split equally" })
 keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close split" })
+
+-- Tabbing and others
+keymap.set("v", "<Tab>", ">gv", { desc = "Indent to the right" })
+keymap.set("v", "<S-Tab>", "<gv", { desc = "Indent to the left" })

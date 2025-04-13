@@ -1,6 +1,7 @@
 return {
   "nvim-tree/nvim-tree.lua",
   dependencies = "nvim-tree/nvim-web-devicons",
+
   config = function()
     local nvimtree = require("nvim-tree")
 
@@ -9,36 +10,36 @@ return {
     vim.g.loaded_netrwPlugin = 1
 
     nvimtree.setup({
+      filters = { dotfiles = false },
+      disable_netrw = true,
+      hijack_cursor = true,
+      sync_root_with_cwd = true,
+      update_focused_file = {
+        enable = true,
+        update_root = false,
+      },
       view = {
-        width = 35,
+        width = 30,
+        preserve_window_proportions = true,
         relativenumber = true,
       },
       renderer = {
-        indent_markers = {
-          enable = true,
-        },
+        root_folder_label = false,
+        highlight_git = true,
+        indent_markers = { enable = true },
         icons = {
           glyphs = {
+            default = "󰈚",
             folder = {
-              arrow_closed = "", -- arrow when folder is closed
-              arrow_open = "", -- arrow when folder is open
+              default = "",
+              empty = "",
+              empty_open = "",
+              open = "",
+              symlink = "",
             },
+            git = { unmerged = "" },
           },
         },
-      },
-      actions = {
-        open_file = {
-          window_picker = {
-            enable = false,
-          },
-        },
-      },
-      -- Equivalent to Jetbrain scopes
-      filters = {
-        custom = { ".DS_Store" },
-      },
-      git = {
-        ignore = false,
       },
     })
 
