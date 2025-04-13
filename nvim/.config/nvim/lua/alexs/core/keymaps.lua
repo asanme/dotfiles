@@ -25,11 +25,8 @@ keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" })
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to prev tab" })
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current file in new tab" })
 
--- Open explorer
-keymap.set("n", "<C-n>", "<cmd>Explore<CR>", { desc = "Open file explorer" }) 
-
 -- Split control
 keymap.set("n", "<C-l>", "<C-w>v", { desc = "Split vertically" })
 keymap.set("n", "<C-l>", "<C-w>s", { desc = "Split horizontally" })
-keymap.set("n", "<leader>sh", "<C-w>=", { desc = "Resize split equally" })
+keymap.set("n", "<leader>se", "<C-w>=", { desc = "Resize split equally" })
 keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close split" })
