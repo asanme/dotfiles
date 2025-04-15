@@ -15,12 +15,12 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("alexs/plugins", {
+require("lazy").setup({ { import = "alexs.plugins" }, { import =  "alexs.plugins.lsp" } } , {
   checker = {
     enabled = true,
     notify = false,
   },
   change_detection = {
     notify = false, 
-  }
+  },
 })
