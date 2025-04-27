@@ -1,15 +1,19 @@
+set noswapfile
 set number
 set relativenumber
 set cursorline
 set clipboard=unnamedplus
+set tabstop=2
+set shiftwidth=2
 set expandtab
 set autoindent
 set ignorecase
 set smartcase
 set splitright
 set splitbelow
-set incsearch
 set scrolloff=999
+set background=dark
+set backspace=indent,eol,start
 
 let mapleader="\<Space>"
 
@@ -59,3 +63,7 @@ noremap <leader>fw :action FindInPath<CR>
 
 nnoremap <Tab> :tabnext<CR>
 nnoremap <S-Tab> :tabprevious<CR>
+
+inoremap <S-Tab> <C-D>
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
