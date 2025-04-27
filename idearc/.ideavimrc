@@ -1,26 +1,61 @@
-set clipboard^=unnamedplus
 set number
 set relativenumber
-set showmode
-set showcmd
+set cursorline
+set clipboard=unnamedplus
+set expandtab
+set autoindent
 set ignorecase
+set smartcase
+set splitright
+set splitbelow
 set incsearch
+set scrolloff=999
+
+let mapleader="\<Space>"
 
 vnoremap p "_dP
+nnoremap <CR> m`o<Esc>``
+nnoremap <S-CR> m`O<Esc>``
+nnoremap ; :
+inoremap jk <Esc>
 
-sethandler <c-h> a:vim
-sethandler <c-l> a:vim
-sethandler <c-j> a:vim
-sethandler <c-k> a:vim
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
+nnoremap <leader>cs :nohlsearch<CR>
 
-nnoremap <Tab> >>_
-nnoremap <S-Tab> <<_
-inoremap <S-Tab> <C-D>
-vnoremap <Tab> >gv
-vnoremap <S-Tab> <gv
+nnoremap + <C-a>
+nnoremap - <C-x>
 
-set scrolloff=999
+nnoremap <leader>sv <C-w>v
+nnoremap <leader>sh <C-w>s
+nnoremap <leader>sx :action Unsplit<CR>
+
+nnoremap <leader>x :action CloseEditor<CR>
+
+nnoremap gR :action FindUsages<CR>
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gt :action GotoTypeDeclaration<CR>
+
+nnoremap <leader>ca :action ShowIntentionActions<CR>
+xnoremap <leader>ca :action ShowIntentionActions<CR>
+
+nnoremap <leader>rn :action RenameElement<CR>
+
+nnoremap <leader>d :action ShowErrorDescription<CR>
+
+nnoremap K :action QuickJavaDoc<CR>
+
+noremap <leader>fm :action ReformatCode<CR>
+
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+nnoremap <leader>ot :action ActivateTerminalToolWindow<CR>
+
+nnoremap <leader>ff :action GotoFile<CR>
+noremap <leader>fr :action RecentFiles<CR>
+noremap <leader>fw :action FindInPath<CR>
+
+nnoremap <Tab> :tabnext<CR>
+nnoremap <S-Tab> :tabprevious<CR>
