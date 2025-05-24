@@ -67,3 +67,12 @@ nnoremap <S-Tab> :tabprevious<CR>
 inoremap <S-Tab> <C-D>
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
+
+nnoremap gcc :action CommentByLineComment<CR>
+xnoremap gc :action CommentByLineComment<CR>
+
+nnoremap <Leader>ec :action Run<CR>
+nnoremap <Leader>dc :action Debug<CR>
+nnoremap <Leader>bp :action ToggleLineBreakpoint<CR>
+
+vmap <Leader>ys :action SurroundWith<CR>
