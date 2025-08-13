@@ -21,6 +21,7 @@ export STARSHIP_CONFIG=~/.config/starship/starship.toml
 export ANDROID_HOME=~/Android/Sdk
 export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator
+export PATH=$PATH:/home/dev/.cargo/bin
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -29,3 +30,6 @@ export NVM_DIR="$HOME/.nvm"
 export NVM_SYMLINK_CURRENT=true
 
 alias edit='neovide &'
+. "$HOME/.cargo/env"
+
+alias la='ls -la'

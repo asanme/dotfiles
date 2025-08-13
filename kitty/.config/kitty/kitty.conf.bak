@@ -16,6 +16,6 @@ map ctrl+shift+F send_text all \x1b[70;5u
 
 
 # BEGIN_KITTY_THEME
-# Ayu
+# Argonaut
 include current-theme.conf
 # END_KITTY_THEME
