@@ -10,7 +10,7 @@ alias cp-tool='xclip -selection clipboard'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias em='emulator -avd emulator'
-
+alias tmux='zellij'
 
 PS1='[\u@\h \W]\$ '
 
