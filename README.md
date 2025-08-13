@@ -6,9 +6,13 @@
 - IdeaVim
 - Starship
 - Qtile (old)
+- Other configuration files
 
 ## Starship
 ![image](https://user-images.githubusercontent.com/73963860/218272477-c01dab6b-01bd-454f-aa65-89f1ba01efcb.png)
+
+## Vial Configuration - Silakka54 [WIP]
+I daily drive a split-mechanical keyboard, I will post updates to this once the build is finished. 
 
 # i3wm
 <img width="1260" alt="i3-wm" src="https://github.com/user-attachments/assets/f893bd0c-6eec-4c68-8f40-4da5845f7b0c" />
